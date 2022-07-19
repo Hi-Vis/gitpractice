@@ -3,7 +3,7 @@
     "path": "~/gitpractice/testing rmd for github.Rmd",
     "project_path": null,
     "type": "r_markdown",
-    "hash": "2050749580",
+    "hash": "3609969148",
     "contents": "",
     "dirty": false,
     "created": 1658212536558.0,
@@ -13,15 +13,15 @@
         "chunk_output_type": "inline",
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "25,0",
-        "scrollLine": "17"
+        "cursorPosition": "16,0",
+        "scrollLine": "8"
     },
     "folds": "",
-    "lastKnownWriteTime": 1658212683,
+    "lastKnownWriteTime": 1658212772,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1658212684006,
+    "last_content_update": 1658212773006,
     "read_only": false,
     "read_only_alternatives": []
 }

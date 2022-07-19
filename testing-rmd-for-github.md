@@ -9,22 +9,43 @@ output:
 
 MULTIVERSE PACKAGE VIGNETTE
 https://cran.r-project.org/web/packages/multiverse/readme/README.html
-```{r}
+
+```r
 #install.packages("finalfit")
 
 library(multiverse)
+```
+
+```
+## Warning: package 'multiverse' was built under R version 4.1.2
+```
+
+```
+## Loading required package: knitr
+```
+
+```r
 library(ggplot2)
 #library(tidyverse)
 #library(broomExtra)
 utils::memory.limit(56000)
-options(scipen=999)
-
 ```
 
-```{r}
+```
+## [1] 56000
+```
+
+```r
+options(scipen=999)
+```
+
+
+```r
 x<-c(5,8,9)
 y<-c(6,2,3)
 dfPRACT<-data.frame(cbind(x,y))
 ggplot(dfPRACT,aes(x,y)) + geom_point()
 ```
+
+![](testing-rmd-for-github_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 

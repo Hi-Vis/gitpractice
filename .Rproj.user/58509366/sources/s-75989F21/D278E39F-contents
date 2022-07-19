@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output: 
+  html_document:
+    keep_md: true
 ---
 
 ##12.07 removing all age 34 covariates (4 from demos, 1 from health) > updating the file name from multidata2 to multidata3
@@ -11,6 +13,7 @@ https://cran.r-project.org/web/packages/multiverse/readme/README.html
 #install.packages("finalfit")
 
 library(multiverse)
+library(ggplot2)
 #library(tidyverse)
 #library(broomExtra)
 utils::memory.limit(56000)
