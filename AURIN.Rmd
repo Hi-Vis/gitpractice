@@ -30,19 +30,19 @@ notaurin::aur_register("mxmoe", "ageIu0jwbBvy8d1O")
 ```
 
 ```{r}
-library(sf)
-library(httr)
-library(tidyverse)
-library(ows4R)
-install.packages('mapview')
-library(mapview)
-library(utils)
+#library(sf)
+#library(httr)
+#library(tidyverse)
+#library(ows4R)
+#install.packages('mapview')
+#library(mapview)
+#library(utils)
 #### ------ Setup variables ------- #####
 wfs_url <- "https://adp.aurin.org.au/geoserver/wfs"
 user_name <- "mxmoe"
 password <- "ageIu0jwbBvy8d1O"
 #### ------ Define url ----- ####
-url <- parse_url(wfs_url)
+url <- httr::parse_url(wfs_url)
 url$hostname <- paste(user_name,":",password,"@",url$hostname, sep="")
 adp_client <- WFSClient$new(url = wfs_url, user = user_name, pwd = password, serviceVersion = '2.0.0')
 
