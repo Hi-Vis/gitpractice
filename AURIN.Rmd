@@ -1,6 +1,9 @@
 ---
 title: "AURIN"
-output: rmarkdown::github_document
+output: 
+  html_document:
+    keep_md: true
+  
 ---
 
 ```{r setup, include=FALSE}
@@ -11,15 +14,65 @@ knitr::opts_chunk$set(echo = TRUE)
 #https://aurin.org.au/resources/aurin-apis/aurin-open-api-and-r/
 #https://github.com/asiripanich/aurin
 
-install.packages("aurin")
-library(aurin)
+#install.packages("aurin")
+#library(aurin)
 
-aur_register("research", "9g6P7DkT")
+#UPDATE 19.07 -> Aurin made them remove the aurin package, now it is called notaurin
+remotes::install_github("asiripanich/notaurin")
+library(notaurin)
+
+#had to create new credentials 19.07 on the aurin new ADP website
+notaurin::aur_register("mxmoe", "ageIu0jwbBvy8d1O")
+
+#hmm this doesn't seem to be working: maybe go through the official aurin channel instead:https://aurin.org.au/resources/training/explore-r/
+
+
 ```
+
+```{r}
+library(sf)
+library(httr)
+library(tidyverse)
+library(ows4R)
+install.packages('mapview')
+library(mapview)
+library(utils)
+#### ------ Setup variables ------- #####
+wfs_url <- "https://adp.aurin.org.au/geoserver/wfs"
+user_name <- "mxmoe"
+password <- "ageIu0jwbBvy8d1O"
+#### ------ Define url ----- ####
+url <- parse_url(wfs_url)
+url$hostname <- paste(user_name,":",password,"@",url$hostname, sep="")
+adp_client <- WFSClient$new(url = wfs_url, user = user_name, pwd = password, serviceVersion = '2.0.0')
+
+
+#hmm the below is not working either when it comes to the download/file function
+#toilet data:
+url$query <- list(service = "wfs",
+version = "2.0.0", 
+request = "GetFeature",
+typeName = "datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017",
+srsName = "EPSG:4283") #had to update this
+request <- build_url(url)
+request
+### ---- Download the data ---- ###
+download.file(request, destfile = "./data_toilet.gml", mode='wb')
+### ---- Read the data ---- ####
+data <- read_sf("data_fire.gml")
+```
+
+
+
+
 ```{r}
 aur_browse()
+meta<-notaurin::aur_meta() #hmm this isn't working now...
 
-public_toilets<-aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
+#public_toilets<-aur_get("aurin:datasource-UQ_ERG-UoM_AURIN_DB_public_toilets")
+#19.07 let's use the 2017 data instead
+
+public_toilets<-aur_get("aurin:datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017")
 
 state_polygons <- aur_get(open_api_id = "aurin:datasource-AU_Govt_ABS-UoM_AURIN_DB_GeoLevel_ste_2016_aust")
 state_polygons <- state_polygons[state_polygons$state_code_2016 %in% 1:8, ]

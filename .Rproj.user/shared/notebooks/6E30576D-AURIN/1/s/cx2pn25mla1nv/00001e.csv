@@ -1,0 +1,11 @@
+"0","public_toilets<-aur_get(""aurin:datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017"")
+"
+"2","[36mi[39m Downloading 'aurin:datasource-AU_Govt_DSS-UoM_AURIN:national_public_toilets_2017'...
+"
+"2","Warning in CPL_read_ogr(dsn, layer, query, as.character(options), quiet,  :"
+"2","
+ "
+"2"," GDAL Error 1: HTTP error code : 404
+"
+"2","Error: Cannot open ""http://mxmoe:ageIu0jwbBvy8d1O@openapi.aurin.org.au/wfs?service=wfs&version=1.0.0&request=GetFeature&srsName=EPSG%3A4326&outputFormat=application%2Fjson&typename=aurin%3Adatasource-AU_Govt_DSS-UoM_AURIN%3Anational_public_toilets_2017""; Check connection parameters.
+"
